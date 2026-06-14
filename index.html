@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- ============================================
+         META TAGS E CONFIGURAÇÕES DO DOCUMENTO
+         Define charset, viewport responsivo e tags
+         de SEO (título, descrição) para o site.
+    ============================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Soluções completas em assistência técnica, impressões de alta qualidade e desenvolvimento de software sob medida. Conectando seu negócio ao futuro digital."
+    />
+    <meta
+      name="keywords"
+      content="tecnologia, assistência técnica, impressão, software, desenvolvimento, loja de bairro"
+    />
+    <meta name="author" content="Valvendas" />
+
+    <!-- Título da página — Aparece na aba do navegador e nos resultados de busca -->
+    <title>Valvendas — Tecnologia, Impressão e Software</title>
+
+    <!-- ============================================
+         GOOGLE FONTS — POPPINS
+         Fonte moderna e limpa utilizada em todo o site.
+         Importada diretamente do serviço Google Fonts.
+         Pesos: 300 (light), 400 (regular), 500 (medium),
+         600 (semi-bold), 700 (bold).
+    ============================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Folha de estilos principal do site -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ============================================
+         CANVAS DE PARTÍCULAS INTERATIVAS
+         Elemento <canvas> posicionado de forma fixa
+         cobrindo toda a viewport. Renderiza partículas
+         efêmeras (azul, verde, ciano) que seguem o
+         movimento do cursor do mouse.
+         - pointer-events: none → não interfere nos
+           cliques e interações do usuário.
+         - aria-hidden="true" → oculto para leitores
+           de tela (é puramente decorativo).
+         - z-index: 0 → fica atrás de todo o conteúdo.
+    ============================================ -->
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <!-- ============================================
+         HEADER / BARRA DE NAVEGAÇÃO FIXA
+         Fixo no topo da página (position: fixed).
+         Fundo em degradê linear (azul claro → verde ciano).
+         Comportamento responsivo:
+           - Desktop (> 768px): menu horizontal completo.
+           - Mobile (≤ 768px): menu hambúrguer.
+    ============================================ -->
+    <header id="header-nav">
+      <nav class="navbar" role="navigation" aria-label="Navegação principal">
+        <!-- Logotipo / Nome da loja no canto esquerdo -->
+        <div class="nav-logo">
+          <a href="#apresentacao" aria-label="Voltar ao topo — Valvendas">
+            Valvendas
+          </a>
+        </div>
+
+        <!-- ====================================
+                 BOTÃO HAMBÚRGUER (Mobile)
+                 Visível apenas em telas ≤ 768px.
+                 Três linhas que se transformam em "X"
+                 ao ser ativado via JavaScript.
+                 Atributos ARIA para acessibilidade.
+            ==================================== -->
+        <button
+          class="hamburger"
+          id="hamburger-btn"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <span class="hamburger-line" aria-hidden="true"></span>
+          <span class="hamburger-line" aria-hidden="true"></span>
+          <span class="hamburger-line" aria-hidden="true"></span>
+        </button>
+
+        <!-- ====================================
+                 LINKS DE NAVEGAÇÃO
+                 Lista de âncoras que apontam para as
+                 seções da SPA. No mobile, o menu desliza
+                 lateralmente ao ser ativado pelo hambúrguer.
+            ==================================== -->
+        <ul class="nav-links" id="nav-links" role="menubar">
+          <li role="none">
+            <a href="#apresentacao" class="nav-link" role="menuitem">Início</a>
+          </li>
+          <li role="none">
+            <a href="#servicos" class="nav-link" role="menuitem">Serviços</a>
+          </li>
+          <li role="none">
+            <a href="#contato" class="nav-link" role="menuitem">Contato</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============================================
+         CONTEÚDO PRINCIPAL (MAIN)
+         Container de scroll com Scroll Snapping.
+         Cada seção filha ocupa 100vh e "encaixa"
+         (snap) suavemente durante a rolagem.
+    ============================================ -->
+    <main id="main-content">
+      <!-- ========================================
+             SEÇÃO 1: APRESENTAÇÃO (100vh)
+             Seção hero com card Glassmorphism contendo
+             o título principal interativo e a descrição
+             dos serviços da loja.
+        ======================================== -->
+      <section id="apresentacao" class="snap-section section-apresentacao">
+        <!-- ====================================
+                 CARD GLASSMORPHISM
+                 Container estilizado com:
+                 - Fundo branco semi-transparente
+                 - backdrop-filter: blur(10px) para
+                   desfoque do fundo (partículas)
+                 - Cantos arredondados e sombra sutil
+                 - Animação de entrada (fade-in + slide-up)
+            ==================================== -->
+        <div class="glass-card" id="glass-card-hero">
+          <!-- Título principal — interativo com hover -->
+          <h1 class="titulo-principal" id="titulo-hero">
+            Bem-vindo à Valvendas
+          </h1>
+
+          <!-- Parágrafo descritivo dos serviços -->
+          <p class="descricao-principal">
+            Na Valvendas, unimos a tradição do atendimento de bairro com a
+            vanguarda da tecnologia. Oferecemos soluções completas em vendas de
+            equipamentos, impressões de alta qualidade e desenvolvimento de
+            softwares sob medida para impulsionar o seu negócio.
+          </p>
+
+          <!-- ================================
+                     INDICADOR DE SCROLL
+                     Seta animada convidando o usuário
+                     a rolar para a próxima seção.
+                ================================ -->
+          <div class="scroll-indicator" aria-hidden="true">
+            <div class="scroll-arrow-container">
+              <svg
+                class="scroll-arrow-svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 13l5 5 5-5" />
+                <path d="M7 6l5 5 5-5" />
+              </svg>
+            </div>
+            <span class="scroll-text">Role para baixo</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+             SEÇÃO 2: SERVIÇOS
+             Apresenta os três pilares de atuação da
+             loja: Tecnologia, Impressão e Software.
+             Cada serviço é exibido em um card com
+             ícone SVG, título e descrição detalhada.
+        ======================================== -->
+      <section id="servicos" class="snap-section section-servicos">
+        <div class="servicos-wrapper">
+          <!-- Título da seção com linha decorativa -->
+          <h2 class="section-title" id="section-title-servicos">
+            Nossos Serviços
+          </h2>
+
+          <!-- Grid de cards de serviços -->
+          <div class="servicos-grid">
+            <!-- ================================
+                         CARD 1: ASSISTÊNCIA TÉCNICA
+                         Vendas e manutenção de equipamentos
+                         tecnológicos diversos.
+                    ================================ -->
+            <div class="servico-card" id="servico-tecnologia">
+              <div class="servico-icon" aria-hidden="true">
+                <!-- Ícone SVG: monitor/computador -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8" />
+                  <path d="M12 17v4" />
+                </svg>
+              </div>
+              <h3 class="servico-titulo">Vendas e Suporte em Software</h3>
+              <p class="servico-descricao">
+                Oferecemos venda de peças, periféricos, acessórios e
+                equipamentos novos, sempre com garantia e preço justo de bairro.
+                Também realizamos formatação, instalação e reparos focados
+                exclusivamente em software.
+              </p>
+              <ul class="servico-lista">
+                <li>Venda de periféricos e acessórios</li>
+                <li>Venda de equipamentos</li>
+                <li>Formatação e instalação de sistemas</li>
+                <li>Reparos em software e remoção de vírus</li>
+              </ul>
+            </div>
+
+            <!-- ================================
+                         CARD 2: SERVIÇOS DE IMPRESSÃO
+                         Impressões de alta qualidade para
+                         diversos formatos e necessidades.
+                    ================================ -->
+            <div class="servico-card" id="servico-impressao">
+              <div class="servico-icon" aria-hidden="true">
+                <!-- Ícone SVG: impressora -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M6 9V2h12v7" />
+                  <path
+                    d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+                  />
+                  <rect x="6" y="14" width="12" height="8" />
+                </svg>
+              </div>
+              <h3 class="servico-titulo">Serviços de Impressão</h3>
+              <p class="servico-descricao">
+                Impressões em alta resolução para uso pessoal e profissional.
+                Atendemos desde documentos simples até projetos gráficos
+                elaborados, com materiais de primeira linha e acabamento
+                impecável.
+              </p>
+              <ul class="servico-lista">
+                <li>Impressão de documentos e apostilas</li>
+                <li>Cartões de visita e material gráfico</li>
+                <li>Banners, faixas e grande formato</li>
+                <li>Cópias, encadernações e plastificações</li>
+              </ul>
+            </div>
+
+            <!-- ================================
+                         CARD 3: DESENVOLVIMENTO DE SOFTWARE
+                         Criação de soluções digitais sob
+                         medida para empresas e empreendedores.
+                    ================================ -->
+            <div class="servico-card" id="servico-software">
+              <div class="servico-icon" aria-hidden="true">
+                <!-- Ícone SVG: código/terminal -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                  <line x1="14" y1="4" x2="10" y2="20" />
+                </svg>
+              </div>
+              <h3 class="servico-titulo">Desenvolvimento de Software</h3>
+              <p class="servico-descricao">
+                Criamos soluções de software especializadas para a sua demanda.
+                Desenvolvemos ferramentas modernas e eficientes para otimizar
+                fluxos de trabalho e conectar hardwares específicos com sistemas
+                integrados.
+              </p>
+              <ul class="servico-lista">
+                <li>Desenvolvimento de Sites Institucionais</li>
+                <li>Criação de Webapps dinâmicos e responsivos</li>
+                <li>Ferramentas Desktop nativas para Windows</li>
+                <li>Integração de software com dispositivos locais</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+             SEÇÃO 3: CONTATO E MAPA (100vh)
+             Contém os cards de informações de contato,
+             mapa incorporado do Google Maps e o footer.
+             Usa Flexbox para distribuir o conteúdo
+             verticalmente dentro dos 100vh.
+        ======================================== -->
+      <section id="contato" class="snap-section section-contato">
+        <!-- Wrapper flexível para o conteúdo de contato -->
+        <div class="contato-wrapper">
+          <!-- Título da seção com linha decorativa -->
+          <h2 class="section-title" id="section-title-contato">
+            Entre em Contato
+          </h2>
+
+          <!-- ================================
+                     GRID DE CARDS DE CONTATO
+                     4 cards responsivos dispostos em
+                     grid CSS. Cada card contém um ícone
+                     SVG inline, título e informação.
+                ================================ -->
+          <div class="contato-grid">
+            <!-- Card 1: WhatsApp -->
+            <a
+              href="https://wa.me/c/553433150058"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contato-card card-whatsapp"
+              id="card-whatsapp"
+            >
+              <div class="contato-icon" aria-hidden="true">
+                <!-- Ícone SVG de balão de mensagem (WhatsApp) -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                  />
+                </svg>
+              </div>
+              <h3>WhatsApp</h3>
+              <p>Fale conosco agora →</p>
+            </a>
+
+            <!-- Card 3: Google Meu Negócio -->
+            <a
+              href="https://share.google/MiuOEoJWcOSiHTg0S"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contato-card card-google-business"
+              id="card-google-business"
+            >
+              <div class="contato-icon" aria-hidden="true">
+                <!-- Ícone SVG de loja/negócio (Google Meu Negócio) -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 9l1-4h16l1 4" />
+                  <path d="M3 9a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3 3 3 3 0 0 0 3-3" />
+                  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <h3>Google Meu Negócio</h3>
+              <p>Avalie-nos no Google</p>
+            </a>
+
+            <!-- Card 4: Google Maps (Link) -->
+            <a
+              href="https://maps.google.com/?q=Rua+Patos+331+-+N.S+Da+Abadia+-+Uberaba-mg"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contato-card card-maps"
+              id="card-maps"
+            >
+              <div class="contato-icon" aria-hidden="true">
+                <!-- Ícone SVG de pin de localização (Maps) -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <h3>Google Maps</h3>
+              <p>Abrir Rota no Mapa</p>
+            </a>
+
+            <!-- Card 5: Endereço Físico Completo -->
+            <div class="contato-card card-endereco" id="card-endereco">
+              <div class="contato-icon" aria-hidden="true">
+                <!-- Ícone SVG de casa/prédio (endereço) -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              </div>
+              <h3>Endereço</h3>
+              <p>Rua Patos, 331<br />Bairro: N.S Da Abadia</p>
+            </div>
+          </div>
+
+          <!-- ================================
+                     MAPA INCORPORADO (Google Maps)
+                     Iframe apontando para uma localização
+                     genérica (Av. Paulista, São Paulo).
+                     Substitua o src pelo embed real
+                     da localização da sua loja.
+                ================================ -->
+          <div class="mapa-container" id="mapa-section">
+            <iframe
+              src="https://maps.google.com/maps?q=Rua%20Patos%20331%20-%20N.S%20Da%20Abadia%20-%20Uberaba-mg&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localização da loja Valvendas no Google Maps"
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <!-- ====================================
+                 FOOTER / RODAPÉ
+                 Fundo totalmente preto (#000) com
+                 texto branco (#fff). Contém informações
+                 legais e dados fiscais da empresa.
+                 Posicionado no final da Seção 3 via
+                 flexbox (flex-shrink: 0).
+            ==================================== -->
+        <footer id="footer-principal">
+          <div class="footer-content">
+            <p class="footer-copyright">
+              &copy; 2026 Valvendas. Todos os direitos reservados.
+            </p>
+            <div class="footer-info">
+              <p class="footer-cnpj">CNPJ: 53.082.415/0001-18</p>
+              <span class="footer-divider" aria-hidden="true">|</span>
+              <p class="footer-endereco">
+                Rua Patos, 331 — N.S Da Abadia, Uberaba - MG
+              </p>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </main>
+
+    <!-- Script principal — sistema de partículas, menu hambúrguer, navegação -->
+    <script src="script.js"></script>
+  </body>
+</html>
