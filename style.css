@@ -797,6 +797,17 @@ body {
     box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
 }
 
+/* ---- Catálogo WhatsApp: Verde Escuro (#128C7E) ---- */
+.card-whatsapp-catalog .contato-icon {
+    background: linear-gradient(135deg, #128C7E, #075E54);
+}
+.card-whatsapp-catalog::before {
+    background: linear-gradient(135deg, #128C7E, #075E54);
+}
+.card-whatsapp-catalog:hover .contato-icon {
+    box-shadow: 0 4px 18px rgba(18, 140, 126, 0.4);
+}
+
 /* ---- Google Meu Negócio: Azul Google (#4285F4) → Verde (#34A853) ---- */
 .card-google-business .contato-icon {
     background: linear-gradient(135deg, #4285F4, #34A853);
@@ -1137,10 +1148,15 @@ body {
         padding: 30px 20px;
     }
 
-    /* Grid em coluna única em telas muito pequenas */
+    /* Grid em duas colunas em telas de smartphone */
     .contato-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
+    }
+
+    /* Evita "buraco": centraliza o último card ímpar ocupando as duas colunas */
+    .contato-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
     }
 
     .section-title {
